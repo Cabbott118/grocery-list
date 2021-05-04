@@ -25,7 +25,7 @@ exports.getGroceries = (request, response) => {
 
 // POST
 exports.postGrocery = (request, response) => {
-  if (request.body.trim() === '') {
+  if (request.body.name.trim() === '') {
     return response.status(400).json({ body: 'Please enter something to add' });
   }
 
@@ -48,21 +48,21 @@ exports.postGrocery = (request, response) => {
 };
 
 // DELETE
-exports.deleteGrocery = (req, res) => {
-  const document = db.doc(`/groceries/${req.params.postId}`);
+exports.deleteGrocery = (request, response) => {
+  const document = db.doc(`/groceries/${request.params.groceryId}`);
   document
     .get()
     .then((doc) => {
       if (!doc.exists) {
-        return res.status(404).json({ error: 'Item not found' });
+        return response.status(404).json({ error: 'Item not found' });
       }
       return document.delete();
     })
     .then(() => {
-      res.json({ message: 'Item deleted successfully' });
+      response.json({ message: 'Item deleted successfully' });
     })
     .catch((err) => {
       console.error(err);
-      return res.status(500).json({ error: err.code });
+      return response.status(500).json({ error: err.code });
     });
 };
