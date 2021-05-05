@@ -24,7 +24,7 @@ export default function AddData() {
   });
 
   const handleInputChange = (event) => {
-    event.persist();
+    // event.persist();
     setValues(() => ({
       itemName: event.target.value,
     }));

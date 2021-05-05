@@ -14,15 +14,16 @@ export const getData = () => (dispatch) => {
 };
 
 export const addData = (data) => (dispatch) => {
-  // dispatch({ type: DATA_LOADING });
   axios
     .post(
       'https://us-central1-grocery-list-20e09.cloudfunctions.net/api/postGrocery',
-      data
+      { name: data }
     )
     .then((res) => {
       dispatch({ type: ADD_DATA, payload: res.data });
-    });
+      console.log('DISPATCH - ADD_DATA:', data);
+    })
+    .catch((err) => console.log('Erroring Here: ', err));
 };
 
 export const deleteData = (id) => (dispatch) => {
