@@ -1,7 +1,7 @@
 export default {
   palette: {
     primary: {
-      main: '#289672',
+      main: 'rgb(124, 200, 164)',
       contrastText: '#fff',
     },
     secondary: {
@@ -10,6 +10,10 @@ export default {
     },
   },
   spreadThis: {
+    grid: {},
+    gridItem: {
+      marginTop: '10px',
+    },
     button: {
       textTransform: 'none',
       margin: '10px',

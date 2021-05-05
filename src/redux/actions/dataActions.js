@@ -17,7 +17,7 @@ export const addData = (data) => (dispatch) => {
   axios
     .post(
       'https://us-central1-grocery-list-20e09.cloudfunctions.net/api/postGrocery',
-      { name: data }
+      data
     )
     .then((res) => {
       dispatch({ type: ADD_DATA, payload: res.data });
